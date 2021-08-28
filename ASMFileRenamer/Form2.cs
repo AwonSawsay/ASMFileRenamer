@@ -22,6 +22,7 @@ namespace ASMFileRenamer
             
             InitializeComponent();
             cboxIgnoreLabelStrings.Checked = true;
+            cboxIgnoreTblStrings.Checked = true;
             
 
         }
@@ -358,16 +359,20 @@ namespace ASMFileRenamer
                     if (SplitArray.Length >1 && SplitArray[1].Length > 5)
                     {
                         string strHexAddress = SplitArray[1].Substring(2, 4);
-                        if (SplitArray[0].Length > 5)
+                        if (SplitArray[0].Length > 4)
                         {
-                            strNewNameStringPrefix = SplitArray[0].Substring(0, 5);
+                            strNewNameStringPrefix = SplitArray[0].Substring(0, 4);
                         }
                         
                         strNewNameStringPrefix = strNewNameStringPrefix.ToLower();
                         SkipThisString = false;
-                        if(strNewNameStringPrefix == "label" && cboxIgnoreLabelStrings.Checked)
+                        if(strNewNameStringPrefix == "labe" && cboxIgnoreLabelStrings.Checked)
                         {
                            SkipThisString = true;
+                        }
+                        if (strNewNameStringPrefix == "tbl_" && cboxIgnoreTblStrings.Checked)
+                        {
+                            SkipThisString = true;
                         }
                         SplitArray[1] = strHexAddress.ToLower();
                     }

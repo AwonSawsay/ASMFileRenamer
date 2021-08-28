@@ -45,6 +45,7 @@ namespace ASMFileRenamer
             this.btnOpenLabelFile = new System.Windows.Forms.Button();
             this.cboxReverseColumns = new System.Windows.Forms.CheckBox();
             this.cboxIgnoreLabelStrings = new System.Windows.Forms.CheckBox();
+            this.cboxIgnoreTblStrings = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvASMRenamed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,16 +190,27 @@ namespace ASMFileRenamer
             this.cboxIgnoreLabelStrings.AutoSize = true;
             this.cboxIgnoreLabelStrings.Location = new System.Drawing.Point(349, 520);
             this.cboxIgnoreLabelStrings.Name = "cboxIgnoreLabelStrings";
-            this.cboxIgnoreLabelStrings.Size = new System.Drawing.Size(229, 17);
+            this.cboxIgnoreLabelStrings.Size = new System.Drawing.Size(227, 17);
             this.cboxIgnoreLabelStrings.TabIndex = 12;
-            this.cboxIgnoreLabelStrings.Text = "Ignore \"label\" NewName Strings upon load";
+            this.cboxIgnoreLabelStrings.Text = "Ignore \"labe\" NewName Strings upon load";
             this.cboxIgnoreLabelStrings.UseVisualStyleBackColor = true;
+            // 
+            // cboxIgnoreTblStrings
+            // 
+            this.cboxIgnoreTblStrings.AutoSize = true;
+            this.cboxIgnoreTblStrings.Location = new System.Drawing.Point(349, 543);
+            this.cboxIgnoreTblStrings.Name = "cboxIgnoreTblStrings";
+            this.cboxIgnoreTblStrings.Size = new System.Drawing.Size(224, 17);
+            this.cboxIgnoreTblStrings.TabIndex = 13;
+            this.cboxIgnoreTblStrings.Text = "Ignore \"tbl_\" NewName Strings upon load";
+            this.cboxIgnoreTblStrings.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 545);
+            this.ClientSize = new System.Drawing.Size(753, 589);
+            this.Controls.Add(this.cboxIgnoreTblStrings);
             this.Controls.Add(this.cboxIgnoreLabelStrings);
             this.Controls.Add(this.cboxReverseColumns);
             this.Controls.Add(this.btnOpenLabelFile);
@@ -239,5 +251,6 @@ namespace ASMFileRenamer
         private System.Windows.Forms.Button btnOpenLabelFile;
         private System.Windows.Forms.CheckBox cboxReverseColumns;
         private System.Windows.Forms.CheckBox cboxIgnoreLabelStrings;
+        private System.Windows.Forms.CheckBox cboxIgnoreTblStrings;
     }
 }
