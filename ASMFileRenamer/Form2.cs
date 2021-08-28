@@ -23,6 +23,8 @@ namespace ASMFileRenamer
             InitializeComponent();
             cboxIgnoreLabelStrings.Checked = true;
             cboxIgnoreTblStrings.Checked = true;
+            cboxOnlyProcessLabe.Checked = false;
+            cboxReverseColumns.Checked = false;
             
 
         }
@@ -53,6 +55,20 @@ namespace ASMFileRenamer
             dgvASMRenamed.DataSource = dv;
         }
         OpenFileDialog OPENAsmRenamingFile = new OpenFileDialog();
+        private void ClearDataSetAndTable()
+        {
+            dgvASMRenamed.DataSource = null;
+            dgvASMRenamed.Rows.Clear();
+            tboxSearchBox.Text = "";
+            dv.RowFilter = null;
+            if (dv.Table != null)
+            {
+                dv.Table.Clear();
+                this.dgvASMRenamed.DataSource = null;
+                dgvASMRenamed.Rows.Clear();
+            }
+        }
+        
         private void btnOpenAsmXMLFile_Click(object sender, EventArgs e)
         {
            
@@ -60,16 +76,7 @@ namespace ASMFileRenamer
             if (OPENAsmRenamingFile.ShowDialog() == DialogResult.OK)
             {
                 XMLPath = OPENAsmRenamingFile.FileName;
-                dgvASMRenamed.DataSource = null;
-                dgvASMRenamed.Rows.Clear();
-                tboxSearchBox.Text = "";
-                dv.RowFilter = null;
-                if (dv.Table != null)
-                {
-                    dv.Table.Clear();
-                    this.dgvASMRenamed.DataSource = null;
-                    dgvASMRenamed.Rows.Clear();
-                }
+                ClearDataSetAndTable();
 
                 //OpenedXMLFile = OPENAsmRenamingFile.FileName;
 
@@ -322,6 +329,7 @@ namespace ASMFileRenamer
 
 
 
+
         private void btnOpenLabelFile_Click(object sender, EventArgs e)
         {
 
@@ -374,13 +382,47 @@ namespace ASMFileRenamer
                         {
                             SkipThisString = true;
                         }
+                        if (cboxOnlyProcessLabe.Checked)
+                        {
+                            if(strNewNameStringPrefix == "labe" || strNewNameStringPrefix == "tbl_")
+                            {
+                                SkipThisString = false;
+                            }
+                            else
+                            {
+                                SkipThisString = true;
+                            }
+                            
+                        }
+
                         SplitArray[1] = strHexAddress.ToLower();
                     }
                     
                     try
                     {
-                        XMLLabelOutput = XMLStringPart1 + "label_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
-                        XMLTblOutput = XMLStringPart1 + "tbl_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
+                        XMLLabelOutput = "";
+                        XMLTblOutput = "";
+                        if (cboxOnlyProcessLabe.Checked)
+                        {
+                            if(strNewNameStringPrefix == "labe")
+                            {
+                                XMLLabelOutput = XMLStringPart1 + "label_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
+                            }
+                            if(strNewNameStringPrefix == "tbl_")
+                            {
+                                XMLTblOutput = XMLStringPart1 + "tbl_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
+                            }
+                        }
+                        else
+                        {
+                            XMLLabelOutput = XMLStringPart1 + "label_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
+                            if (strNewNameStringPrefix != "labe")
+                            {
+                                XMLTblOutput = XMLStringPart1 + "tbl_" + SplitArray[1] + XMLStringPart2 + SplitArray[0] + XMLStringPart3;
+                            }
+                        }
+                        
+                        
                     }
                     catch
                     {
@@ -427,8 +469,9 @@ namespace ASMFileRenamer
 
                 try
                     {
-                   // System.IO.File.Open("tempxml.xml", FileMode.Open);
-                        labelCurrentFile.Text = XMLPath;
+                    labelCurrentFile.Text = XMLPath;
+                    ClearDataSetAndTable();
+                        
                     MakeDataSet();
                     }
                     catch (Exception error)
@@ -436,6 +479,32 @@ namespace ASMFileRenamer
                         MessageBox.Show(error.Message);
                     }
                 }
+            
+        }
+
+        private void cboxOnlyProcessLabe_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cboxOnlyProcessLabe.Checked)
+            {
+                cboxIgnoreLabelStrings.Checked = false;
+                cboxIgnoreTblStrings.Checked = false;
+            }
+        }
+
+        private void cboxReverseColumns_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cboxReverseColumns.Checked)
+            {
+                cboxIgnoreTblStrings.Checked = false;
+                cboxIgnoreLabelStrings.Checked = false;
+                cboxOnlyProcessLabe.Checked = true;
+            }
+            else
+            {
+                cboxIgnoreTblStrings.Checked = true;
+                cboxIgnoreLabelStrings.Checked = true;
+                cboxOnlyProcessLabe.Checked = false;
+            }
             
         }
     }
