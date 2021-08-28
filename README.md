@@ -1,7 +1,7 @@
 # ASMFileRenamer
 Program that will perform a bulk "find &amp; replace" function on an ASM (text) file, based on a user created table.
 
-(This program is case-sensitive)
+(This program is case-sensitive)  
 Start by entering strings you would like to search for in the OriginalName column  
 Enter the string you would like to replace it with in the NewName column  
 Use the Save as button to save an XML file of the strings you've added  
