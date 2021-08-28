@@ -46,6 +46,8 @@ namespace ASMFileRenamer
             this.cboxReverseColumns = new System.Windows.Forms.CheckBox();
             this.cboxIgnoreLabelStrings = new System.Windows.Forms.CheckBox();
             this.cboxIgnoreTblStrings = new System.Windows.Forms.CheckBox();
+            this.cboxOnlyProcessLabe = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvASMRenamed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,6 +186,7 @@ namespace ASMFileRenamer
             this.cboxReverseColumns.TabIndex = 11;
             this.cboxReverseColumns.Text = "Reverse columns upon load";
             this.cboxReverseColumns.UseVisualStyleBackColor = true;
+            this.cboxReverseColumns.CheckedChanged += new System.EventHandler(this.cboxReverseColumns_CheckedChanged);
             // 
             // cboxIgnoreLabelStrings
             // 
@@ -205,11 +208,33 @@ namespace ASMFileRenamer
             this.cboxIgnoreTblStrings.Text = "Ignore \"tbl_\" NewName Strings upon load";
             this.cboxIgnoreTblStrings.UseVisualStyleBackColor = true;
             // 
+            // cboxOnlyProcessLabe
+            // 
+            this.cboxOnlyProcessLabe.AutoSize = true;
+            this.cboxOnlyProcessLabe.Location = new System.Drawing.Point(349, 566);
+            this.cboxOnlyProcessLabe.Name = "cboxOnlyProcessLabe";
+            this.cboxOnlyProcessLabe.Size = new System.Drawing.Size(260, 17);
+            this.cboxOnlyProcessLabe.TabIndex = 14;
+            this.cboxOnlyProcessLabe.Text = "Only Process \"labe\" and \"tbl_\" NewName Strings";
+            this.cboxOnlyProcessLabe.UseVisualStyleBackColor = true;
+            this.cboxOnlyProcessLabe.CheckedChanged += new System.EventHandler(this.cboxOnlyProcessLabe_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(167, 540);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(166, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "(Use when updating source ASM)";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 589);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboxOnlyProcessLabe);
             this.Controls.Add(this.cboxIgnoreTblStrings);
             this.Controls.Add(this.cboxIgnoreLabelStrings);
             this.Controls.Add(this.cboxReverseColumns);
@@ -252,5 +277,7 @@ namespace ASMFileRenamer
         private System.Windows.Forms.CheckBox cboxReverseColumns;
         private System.Windows.Forms.CheckBox cboxIgnoreLabelStrings;
         private System.Windows.Forms.CheckBox cboxIgnoreTblStrings;
+        private System.Windows.Forms.CheckBox cboxOnlyProcessLabe;
+        private System.Windows.Forms.Label label3;
     }
 }
