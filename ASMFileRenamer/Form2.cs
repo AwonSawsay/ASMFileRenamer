@@ -274,23 +274,31 @@ namespace ASMFileRenamer
         private void RenameUsingValuesFromXML(string[] OrigArray, bool RestoreToOriginalValue = false)
         {
 
-
+           
             for (int index = 0; index < OrigArray.Length; index++)
             {
                 foreach (DataTable table in dataset1.Tables)
                 {
                     foreach (DataRow dr in table.Rows)
                     {
-
-                        if (RestoreToOriginalValue || cboxReverseColumns.Checked)
+                       
+                        //if (Convert.ToString(dr[0]) == "True")
+                        if (Convert.ToBoolean(dr[0]))
                         {
+                            if (RestoreToOriginalValue || cboxReverseColumns.Checked)
+                            {
 
-                            OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[2]), Convert.ToString(dr[1]));
+                                OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[2]), Convert.ToString(dr[1]));
+                                //OrigArray[index] = CaseSenstiveReplace(OrigArray[index], dr[2].ToString(), dr[1].ToString());
+                            }
+                            else 
+                            {
+                                OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[1]), Convert.ToString(dr[2]));
+
+                                // OrigArray[index] = CaseSenstiveReplace(OrigArray[index], dr[1].ToString(), dr[2].ToString());
+                            }
                         }
-                        else if (Convert.ToString(dr[0]) == "True")
-                        {
-                            OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[1]), Convert.ToString(dr[2]));
-                        }
+                          
 
 
                     }
