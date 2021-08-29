@@ -25,6 +25,8 @@ namespace ASMFileRenamer
             cboxIgnoreTblStrings.Checked = true;
             cboxOnlyProcessLabe.Checked = false;
             cboxReverseColumns.Checked = false;
+            progressBar1.Visible = false;
+            lblProgress.Visible = false;
             
 
         }
@@ -228,23 +230,35 @@ namespace ASMFileRenamer
         //StreamWriter objStreamWriter;
         private void btnSaveRenamedASM_Click(object sender, EventArgs e)
         {
+           
+            
+            
             if (ASMOpened)
             {
                 try
                 {
+                    progressBar1.Visible = true;
+                    lblProgress.Visible = true;
+                    lblProgress.Refresh();
 
                     RenamedASMFileArray = System.IO.File.ReadAllLines(CurrentASMPath);
                     ReadXMLFileIntoDataset();
-                    MessageBox.Show("The renamed file will be saved as RENAMED_" + ASMSimpleName+"\n Please be patient with large files and long rename lists." +
-                        "\nYou will be notified when the process is complete.");
+                   // MessageBox.Show("The renamed file will be saved as RENAMED_" + ASMSimpleName);
                     RenameUsingValuesFromXML(RenamedASMFileArray);
+                  
                     string RenamedAsmName = System.IO.Path.GetDirectoryName(CurrentASMPath) + "\\" + "RENAMED_" + ASMSimpleName;
                     using (StreamWriter outputfile = new StreamWriter(RenamedAsmName))
                     {
                         foreach (string line in RenamedASMFileArray)
+                        
                             outputfile.WriteLine(line);
+                            
+                        
+
                     }
+                    
                     MessageBox.Show("File saved as RENAMED_" + ASMSimpleName);
+
                 }
                 catch (Exception error)
                 {
@@ -255,8 +269,9 @@ namespace ASMFileRenamer
             {
                 MessageBox.Show("Open an ASM file that you would like to rename first.");
             }
+            progressBar1.Visible = false;
+            lblProgress.Visible = false;
 
-           
         }
         private void ReadXMLFileIntoDataset()
         {
@@ -273,15 +288,22 @@ namespace ASMFileRenamer
         }
         private void RenameUsingValuesFromXML(string[] OrigArray, bool RestoreToOriginalValue = false)
         {
+            
+            progressBar1.Minimum = 1;
+            //progressBar1.Maximum = dataset1.Tables[0].Rows.Count * 2;
+            progressBar1.Value = 1;
+            progressBar1.Step = 1;
+            progressBar1.Maximum = OrigArray.Length;
 
-           
             for (int index = 0; index < OrigArray.Length; index++)
             {
+               
                 foreach (DataTable table in dataset1.Tables)
                 {
                     foreach (DataRow dr in table.Rows)
                     {
                        
+
                         //if (Convert.ToString(dr[0]) == "True")
                         if (Convert.ToBoolean(dr[0]))
                         {
@@ -297,13 +319,13 @@ namespace ASMFileRenamer
 
                                 // OrigArray[index] = CaseSenstiveReplace(OrigArray[index], dr[1].ToString(), dr[2].ToString());
                             }
+                            
                         }
-                          
-
+                      
 
                     }
                 }
-
+                progressBar1.PerformStep();
             }
 
 
