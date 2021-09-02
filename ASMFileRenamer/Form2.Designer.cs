@@ -50,7 +50,9 @@ namespace ASMFileRenamer
             this.label3 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblProgress = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvASMRenamed)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvASMRenamed
@@ -87,9 +89,9 @@ namespace ASMFileRenamer
             // 
             // btnOpenAsmXMLFile
             // 
-            this.btnOpenAsmXMLFile.Location = new System.Drawing.Point(27, 480);
+            this.btnOpenAsmXMLFile.Location = new System.Drawing.Point(593, 476);
             this.btnOpenAsmXMLFile.Name = "btnOpenAsmXMLFile";
-            this.btnOpenAsmXMLFile.Size = new System.Drawing.Size(137, 23);
+            this.btnOpenAsmXMLFile.Size = new System.Drawing.Size(132, 23);
             this.btnOpenAsmXMLFile.TabIndex = 1;
             this.btnOpenAsmXMLFile.Text = "Open XML Renaming File";
             this.btnOpenAsmXMLFile.UseVisualStyleBackColor = true;
@@ -97,9 +99,9 @@ namespace ASMFileRenamer
             // 
             // btnSaveRenamingFile
             // 
-            this.btnSaveRenamingFile.Location = new System.Drawing.Point(452, 480);
+            this.btnSaveRenamingFile.Location = new System.Drawing.Point(593, 505);
             this.btnSaveRenamingFile.Name = "btnSaveRenamingFile";
-            this.btnSaveRenamingFile.Size = new System.Drawing.Size(113, 23);
+            this.btnSaveRenamingFile.Size = new System.Drawing.Size(132, 23);
             this.btnSaveRenamingFile.TabIndex = 2;
             this.btnSaveRenamingFile.Text = "Save XML";
             this.btnSaveRenamingFile.UseVisualStyleBackColor = true;
@@ -152,7 +154,7 @@ namespace ASMFileRenamer
             // 
             // btnLoadASMFile
             // 
-            this.btnLoadASMFile.Location = new System.Drawing.Point(593, 480);
+            this.btnLoadASMFile.Location = new System.Drawing.Point(593, 556);
             this.btnLoadASMFile.Name = "btnLoadASMFile";
             this.btnLoadASMFile.Size = new System.Drawing.Size(132, 23);
             this.btnLoadASMFile.TabIndex = 8;
@@ -162,7 +164,7 @@ namespace ASMFileRenamer
             // 
             // btnSaveRenamedASM
             // 
-            this.btnSaveRenamedASM.Location = new System.Drawing.Point(593, 508);
+            this.btnSaveRenamedASM.Location = new System.Drawing.Point(593, 584);
             this.btnSaveRenamedASM.Name = "btnSaveRenamedASM";
             this.btnSaveRenamedASM.Size = new System.Drawing.Size(132, 23);
             this.btnSaveRenamedASM.TabIndex = 9;
@@ -172,7 +174,7 @@ namespace ASMFileRenamer
             // 
             // btnOpenLabelFile
             // 
-            this.btnOpenLabelFile.Location = new System.Drawing.Point(27, 508);
+            this.btnOpenLabelFile.Location = new System.Drawing.Point(8, 16);
             this.btnOpenLabelFile.Name = "btnOpenLabelFile";
             this.btnOpenLabelFile.Size = new System.Drawing.Size(137, 23);
             this.btnOpenLabelFile.TabIndex = 10;
@@ -183,7 +185,7 @@ namespace ASMFileRenamer
             // cboxReverseColumns
             // 
             this.cboxReverseColumns.AutoSize = true;
-            this.cboxReverseColumns.Location = new System.Drawing.Point(20, 536);
+            this.cboxReverseColumns.Location = new System.Drawing.Point(8, 45);
             this.cboxReverseColumns.Name = "cboxReverseColumns";
             this.cboxReverseColumns.Size = new System.Drawing.Size(158, 17);
             this.cboxReverseColumns.TabIndex = 11;
@@ -194,7 +196,7 @@ namespace ASMFileRenamer
             // cboxIgnoreLabelStrings
             // 
             this.cboxIgnoreLabelStrings.AutoSize = true;
-            this.cboxIgnoreLabelStrings.Location = new System.Drawing.Point(191, 482);
+            this.cboxIgnoreLabelStrings.Location = new System.Drawing.Point(172, 18);
             this.cboxIgnoreLabelStrings.Name = "cboxIgnoreLabelStrings";
             this.cboxIgnoreLabelStrings.Size = new System.Drawing.Size(227, 17);
             this.cboxIgnoreLabelStrings.TabIndex = 12;
@@ -204,7 +206,7 @@ namespace ASMFileRenamer
             // cboxIgnoreTblStrings
             // 
             this.cboxIgnoreTblStrings.AutoSize = true;
-            this.cboxIgnoreTblStrings.Location = new System.Drawing.Point(191, 505);
+            this.cboxIgnoreTblStrings.Location = new System.Drawing.Point(172, 41);
             this.cboxIgnoreTblStrings.Name = "cboxIgnoreTblStrings";
             this.cboxIgnoreTblStrings.Size = new System.Drawing.Size(224, 17);
             this.cboxIgnoreTblStrings.TabIndex = 13;
@@ -214,7 +216,7 @@ namespace ASMFileRenamer
             // cboxOnlyProcessLabe
             // 
             this.cboxOnlyProcessLabe.AutoSize = true;
-            this.cboxOnlyProcessLabe.Location = new System.Drawing.Point(191, 528);
+            this.cboxOnlyProcessLabe.Location = new System.Drawing.Point(172, 64);
             this.cboxOnlyProcessLabe.Name = "cboxOnlyProcessLabe";
             this.cboxOnlyProcessLabe.Size = new System.Drawing.Size(260, 17);
             this.cboxOnlyProcessLabe.TabIndex = 14;
@@ -225,7 +227,7 @@ namespace ASMFileRenamer
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 556);
+            this.label3.Location = new System.Drawing.Point(0, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 13);
             this.label3.TabIndex = 15;
@@ -233,7 +235,7 @@ namespace ASMFileRenamer
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(316, 554);
+            this.progressBar1.Location = new System.Drawing.Point(125, 568);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(288, 23);
             this.progressBar1.TabIndex = 16;
@@ -242,25 +244,35 @@ namespace ASMFileRenamer
             // 
             this.lblProgress.AutoSize = true;
             this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgress.Location = new System.Drawing.Point(244, 557);
+            this.lblProgress.Location = new System.Drawing.Point(47, 571);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(66, 16);
             this.lblProgress.TabIndex = 17;
             this.lblProgress.Text = "Progress:";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cboxOnlyProcessLabe);
+            this.groupBox1.Controls.Add(this.cboxIgnoreTblStrings);
+            this.groupBox1.Controls.Add(this.cboxIgnoreLabelStrings);
+            this.groupBox1.Controls.Add(this.cboxReverseColumns);
+            this.groupBox1.Controls.Add(this.btnOpenLabelFile);
+            this.groupBox1.Location = new System.Drawing.Point(12, 476);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(476, 83);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Import Labels";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 589);
+            this.ClientSize = new System.Drawing.Size(742, 616);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboxOnlyProcessLabe);
-            this.Controls.Add(this.cboxIgnoreTblStrings);
-            this.Controls.Add(this.cboxIgnoreLabelStrings);
-            this.Controls.Add(this.cboxReverseColumns);
-            this.Controls.Add(this.btnOpenLabelFile);
             this.Controls.Add(this.btnSaveRenamedASM);
             this.Controls.Add(this.btnLoadASMFile);
             this.Controls.Add(this.btnClearNew);
@@ -275,6 +287,8 @@ namespace ASMFileRenamer
             this.Text = "ASM File Renamer v1.2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvASMRenamed)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +317,6 @@ namespace ASMFileRenamer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

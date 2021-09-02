@@ -304,8 +304,8 @@ namespace ASMFileRenamer
                     {
                        
 
-                        //if (Convert.ToString(dr[0]) == "True")
-                        if (Convert.ToBoolean(dr[0]))
+                        if (Convert.ToString(dr[0]) == "True")
+                        //if (Convert.ToBoolean(dr[0]))
                         {
                             if (RestoreToOriginalValue || cboxReverseColumns.Checked)
                             {
