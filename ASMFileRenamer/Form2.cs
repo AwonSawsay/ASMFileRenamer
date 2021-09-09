@@ -242,9 +242,10 @@ namespace ASMFileRenamer
                     lblProgress.Refresh();
 
                     RenamedASMFileArray = System.IO.File.ReadAllLines(CurrentASMPath);
+                    ASMFileArray = System.IO.File.ReadAllLines(CurrentASMPath);
                     ReadXMLFileIntoDataset();
                    // MessageBox.Show("The renamed file will be saved as RENAMED_" + ASMSimpleName);
-                    RenameUsingValuesFromXML(RenamedASMFileArray);
+                    RenameUsingValuesFromXML(ASMFileArray, RenamedASMFileArray);
                   
                     string RenamedAsmName = System.IO.Path.GetDirectoryName(CurrentASMPath) + "\\" + "RENAMED_" + ASMSimpleName;
                     using (StreamWriter outputfile = new StreamWriter(RenamedAsmName))
@@ -286,7 +287,7 @@ namespace ASMFileRenamer
                 MessageBox.Show(error.Message);
             }
         }
-        private void RenameUsingValuesFromXML(string[] OrigArray, bool RestoreToOriginalValue = false)
+        private void RenameUsingValuesFromXML(string[] OrigArray, string[] NewArray, bool RestoreToOriginalValue = false)
         {
             
             progressBar1.Minimum = 1;
@@ -307,18 +308,13 @@ namespace ASMFileRenamer
                         if (Convert.ToString(dr[0]) == "True")
                         //if (Convert.ToBoolean(dr[0]))
                         {
-                            if (RestoreToOriginalValue || cboxReverseColumns.Checked)
+                            string searchString = Convert.ToString(dr[2]);
+                            
+                            if (OrigArray[index].Contains(searchString) )
                             {
-
-                                OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[2]), Convert.ToString(dr[1]));
-                                //OrigArray[index] = CaseSenstiveReplace(OrigArray[index], dr[2].ToString(), dr[1].ToString());
+                                NewArray[index] = CaseSenstiveReplace(NewArray[index], searchString, Convert.ToString(dr[1]));
                             }
-                            else 
-                            {
-                                OrigArray[index] = CaseSenstiveReplace(OrigArray[index], Convert.ToString(dr[1]), Convert.ToString(dr[2]));
-
-                                // OrigArray[index] = CaseSenstiveReplace(OrigArray[index], dr[1].ToString(), dr[2].ToString());
-                            }
+                               
                             
                         }
                       
