@@ -284,7 +284,7 @@ namespace ASMFileRenamer
             this.Controls.Add(this.btnOpenAsmXMLFile);
             this.Controls.Add(this.dgvASMRenamed);
             this.Name = "Form2";
-            this.Text = "ASM File Renamer v1.2";
+            this.Text = "ASM File Renamer v1.3";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvASMRenamed)).EndInit();
             this.groupBox1.ResumeLayout(false);
