@@ -308,11 +308,11 @@ namespace ASMFileRenamer
                         if (Convert.ToString(dr[0]) == "True")
                         //if (Convert.ToBoolean(dr[0]))
                         {
-                            string searchString = Convert.ToString(dr[2]);
+                            string searchString = Convert.ToString(dr[1]);
                             
                             if (OrigArray[index].Contains(searchString) )
                             {
-                                NewArray[index] = CaseSenstiveReplace(NewArray[index], searchString, Convert.ToString(dr[1]));
+                                NewArray[index] = CaseSenstiveReplace(NewArray[index], searchString, Convert.ToString(dr[2]));
                             }
                                
                             
